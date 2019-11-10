@@ -2,10 +2,14 @@
 # -----------------------------------------------
 # 1- refactor import code to use sklearn
 # -----------------------------------------------
+import numpy as np
+
 # performance print results
 def performance(lr):
     # Predicting the results for our test dataset
     predicted_values = lr.predict(X_test)
+
+    print('------------------------------------------------------')
 
     # Printing accuracy score(mean accuracy) from 0 - 1
     print(f'Accuracy score is {lr.score(X_test, y_test):.2f}/1 \n')
@@ -21,6 +25,13 @@ def performance(lr):
 
     print('Overall f1-score')
     print(f1_score(y_test, predicted_values, average="macro"))
+
+    from sklearn import metrics
+    print(f"Printing MAE error(avg abs residual): {metrics.mean_absolute_error(y_test, predicted_values)}")
+    print(f"Printing MSE error: {metrics.mean_squared_error(y_test, predicted_values)}")
+    print(f"Printing RMSE error: {np.sqrt(metrics.mean_squared_error(y_test, predicted_values))}")
+
+    print('------------------------------------------------------')
 
 # previous load method
 import pandas as pd
@@ -95,10 +106,27 @@ performance(lr)
 # -----------------------------------------------
 # 1- using LinearSVC
 # -----------------------------------------------
-# Training a SVC model with fit()
+# Training a LinearSVC model with fit()
+print('Classification Report for LinearSVC')
+from sklearn.svm import LinearSVC
+lr = LinearSVC(C = 1.0)
+lr.fit(X_train, y_train)
+performance(lr)
 
+# Training a SVC model with fit()
 print('Classification Report for SVC')
 from sklearn.svm import SVC
 lr = SVC(kernel='linear', C = 1.0)
 lr.fit(X_train, y_train)
 performance(lr)
+
+# Just for fun visualizing structure of dataset in 2D
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+pca = PCA(n_components=3)
+proj = pca.fit_transform(data.data)
+plt.scatter(proj[:, 0], proj[:, 1], c=data.target, edgecolors='black')
+plt.colorbar()
+plt.show()
+
+plt.close()
