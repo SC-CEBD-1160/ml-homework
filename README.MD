@@ -1,5 +1,7 @@
 ### Analysis of categorization algorithms for the wine dataset
 
+In all cases I am using F1 Score which gives a better measurement for performance  
+
 #### Advanced #2
 
 Tested the **KNeighborsClassifier** with the following values of n_neighbors
@@ -20,8 +22,17 @@ Here are the results
 ##### LinearSVC
 Overall f1-score **0.6997732426303855**
 
+**Description:**
+Implements “one-vs-the-rest” multi-class strategy, thus training n_class models. If there are only two classes, only one model is trained
+implementation of Support Vector Classification for the case of a linear kernel. Note that LinearSVC does not accept keyword kernel, as this is assumed to be linear
+
 ##### SVC
 Overall f1-score **0.9057659483191398**
+
+Playing with the parameters of the SVC function has always resulted in F1 values that were lower
+
+**description**
+The fit time scales at least quadratically with the number of samples
 
 Obviously the SVC has a better Fitness score than LinearSVC but compared to LogisticRegression which has a
 Overall f1-score **0.9539161610590181**

@@ -120,6 +120,15 @@ lr = SVC(kernel='linear', C = 1.0)
 lr.fit(X_train, y_train)
 performance(lr)
 
+# playing with values for classificationin SVC (degree = 3)
+print('Classification Report for SVC improved ??')
+lr = SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0,
+    decision_function_shape='ovo', degree=3, gamma='scale', kernel='rbf',
+    max_iter=-1, probability=False, random_state=None, shrinking=True,
+    tol=0.001, verbose=False)
+lr.fit(X_train, y_train)
+performance(lr)
+
 # Just for fun visualizing structure of dataset in 2D
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
