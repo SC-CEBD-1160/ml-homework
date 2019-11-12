@@ -15,29 +15,33 @@ Analysis indicates that the algorithm works better when there is only one neighb
 I would guess that using 1 as parameter evaluate to a linear classification
 
 #### Reach #1
+##### LogisticRegression
 
-I tried using LinearSVC and SVC for classification of the wine dataset 
+This algorithm gives me a Overall f1-score of **0.9343489718583492**
+
+After that I followed the scikit-learn algorithm cheatsheet and tried LinearSVC and SVC for classification of the wine dataset 
 Here are the results 
 
 ##### LinearSVC
-Overall f1-score **0.6997732426303855**
+Overall f1-score **0.7608695652173912**
 
 **Description:**
-Implements “one-vs-the-rest” multi-class strategy, thus training n_class models. If there are only two classes, only one model is trained
-implementation of Support Vector Classification for the case of a linear kernel. Note that LinearSVC does not accept keyword kernel, as this is assumed to be linear
+LinearSVC does not accept keyword kernel, as this is assumed to be linear
 
 ##### SVC
-Overall f1-score **0.9057659483191398**
+Overall f1-score **0.964957264957265**
 
-Playing with the parameters of the SVC function has always resulted in F1 values that were lower
+Playing with the parameters of the SVC function has always resulted in F1 values that was lower **0.7145352900069882**
+Meaning that you have to know what you are doing before making changes to the default values
 
 **description**
-The fit time scales at least quadratically with the number of samples
 
-Obviously the SVC has a better Fitness score than LinearSVC but compared to LogisticRegression which has a
-Overall f1-score **0.9539161610590181**
+Obviously the SVC has a better Fitness score than LogisticRegression
 
-The best algorithm for the classification is LogisticRegression
+SVC Overall f1-score **0.964957264957265**
+LogisticRegression Overall f1-score **0.9343489718583492**
+
+The best algorithm for the classification is SVC
 
 #### As an extra for fun I added the dataset vizualisation
 The interesting thing about it is that 2 of the classes are kind of blurred together and one is quite separate
