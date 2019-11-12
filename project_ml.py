@@ -2,6 +2,10 @@
 # -----------------------------------------------
 # 1- refactor import code to use sklearn
 # -----------------------------------------------
+#
+# SEE README.MD for analysis
+#
+# -----------------------------------------------
 import numpy as np
 
 # performance print results
